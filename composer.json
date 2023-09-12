@@ -5,7 +5,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "kousar1234",
+            "name": "Kousar Rahman",
             "email": "kousar.themelooks@gmail.com"
         }
     ],
@@ -13,13 +13,7 @@
         "psr-4": {
             "Core\\": "Core/",
             "ThemeLooks\\CoreService\\": "src"
-        },
-        "files": [
-            "Core/Helpers/Helpers.php",
-            "Core/Helpers/Theme.php",
-            "Core/Helpers/Plugin.php",
-            "Core/Helpers/Notification.php"
-        ]
+        }
     },
     "minimum-stability": "dev",
     "require": {}
