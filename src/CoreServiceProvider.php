@@ -16,7 +16,15 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (env('IS_USER_REGISTERED') == 1) {
+            $this->app->singleton('pluginManager', function () {
+                return \Core\Models\Plugin::all();
+            });
+
+            $this->app->singleton('ThemeManager', function () {
+                return \Core\Models\Themes::all();
+            });
+        }
     }
 
     /**
