@@ -15,9 +15,6 @@ Add this lines under providers array in config/app.php
 ``` php
 ThemeLooks\CoreService\CoreServiceProvider::class,
 ThemeLooks\CoreService\CoreRouteServiceProvider::class,
-ThemeLooks\CoreService\PluginServiceProvider::class,
-ThemeLooks\CoreService\PluginRouteServices::class,
-ThemeLooks\CoreService\ThemeServiceProvider::class,
 ```
 ### Changelog
 
