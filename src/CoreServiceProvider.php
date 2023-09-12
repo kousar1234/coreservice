@@ -41,24 +41,11 @@ class CoreServiceProvider extends ServiceProvider
 
     public function loadCoreHelpers()
     {
-        if (file_exists(base_path('Core/Helpers/Helpers.php'))) {
-            require_once(base_path('Core/Helpers/Helpers.php'));
-        }
-
-        if (file_exists(base_path('Core/Helpers/Theme.php'))) {
-            require_once(base_path('Core/Helpers/Theme.php'));
-        }
-
-        if (file_exists(base_path('Core/Helpers/Plugin.php'))) {
-            require_once(base_path('Core/Helpers/Plugin.php'));
-        }
-
-        if (file_exists(base_path('Core/Helpers/Notification.php'))) {
-            require_once(base_path('Core/Helpers/Notification.php'));
-        }
-
-        if (file_exists(base_path('Core/Helpers/Media.php'))) {
-            require_once(base_path('Core/Helpers/Media.php'));
+        $helperFiles = glob(base_path('Core/Helpers/*.php'));
+        foreach ($helperFiles as $helperFile) {
+            if (file_exists($helperFile)) {
+                require_once($helperFile);
+            }
         }
     }
 }
