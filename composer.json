@@ -1,0 +1,26 @@
+{
+    "name": "themelooks/coreservice",
+    "description": "Core service library for laravel project",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kousar1234",
+            "email": "kousar.themelooks@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "ThemeLooks\\CoreService\\": "src"
+        },
+        "files": [
+            "Core/Helpers/Helpers.php",
+            "Core/Helpers/Theme.php",
+            "Core/Helpers/Plugin.php",
+            "Core/Helpers/Notification.php"
+        ]
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
