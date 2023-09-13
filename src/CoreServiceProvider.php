@@ -3,8 +3,6 @@
 namespace ThemeLooks\CoreService;
 
 use Composer\Autoload\ClassLoader;
-use Illuminate\Support\Facades\View;
-use Core\Views\Composer\Core;
 use Illuminate\Support\ServiceProvider;
 
 class CoreServiceProvider extends ServiceProvider
@@ -24,6 +22,8 @@ class CoreServiceProvider extends ServiceProvider
             $this->app->singleton('ThemeManager', function () {
                 return \Core\Models\Themes::all();
             });
+            $this->loadCoreNamespace();
+            $this->loadCoreCommands();
         }
     }
 
@@ -37,6 +37,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->loadCoreNamespace();
         $this->loadCoreHelpers();
         $this->loadViewsFrom(base_path('Core/resources/views'), 'core');
+
         if (env('IS_USER_REGISTERED') == 1) {
             $this->registerPlugins();
             $this->registerTheme();
@@ -56,6 +57,18 @@ class CoreServiceProvider extends ServiceProvider
         foreach ($helperFiles as $helperFile) {
             if (file_exists($helperFile)) {
                 require_once($helperFile);
+            }
+        }
+    }
+
+    public function loadCoreCommands()
+    {
+        $commandsPath = base_path('Core/Console/Commands');
+        foreach (glob($commandsPath . '/*.php') as $file) {
+            $commandClass = 'Core\\Console\\Commands\\' . pathinfo($file, PATHINFO_FILENAME);
+
+            if (class_exists($commandClass)) {
+                $this->commands($commandClass);
             }
         }
     }
