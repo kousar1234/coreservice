@@ -41,7 +41,6 @@ class CoreServiceProvider extends ServiceProvider
             $this->registerPlugins();
             $this->registerTheme();
         }
-        View::composer(['core::base.layouts.header', 'core::base.layouts.master', 'core::base'], Core::class);
     }
 
     public function loadCoreNamespace()
